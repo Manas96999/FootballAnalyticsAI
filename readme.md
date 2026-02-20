@@ -1,86 +1,81 @@
-&lt;!-- Animated Header Banner --&gt;
-&lt;p align="center"&gt;
-  &lt;img src="https://capsule-render.vercel.app/api?type=waving&color=0:39ff14,50:00d4ff,100:ff2a6d&height=250&section=header&text=Football%20Analytics%20AI&fontSize=60&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Real-Time%20Tactical%20Command%20Center%20|%20Live%20Match%20Intelligence&descAlignY=55&descSize=18"/&gt;
-&lt;/p&gt;
-
-&lt;!-- Dynamic Badges Row --&gt;
-&lt;p align="center"&gt;
-  &lt;img src="https://img.shields.io/badge/Python-3.9%2B-39ff14?style=for-the-badge&logo=python&logoColor=white&labelColor=0d2818"/&gt;
-  &lt;img src="https://img.shields.io/badge/Flask-2.0%2B-00d4ff?style=for-the-badge&logo=flask&logoColor=white&labelColor=0a1f2e"/&gt;
-  &lt;img src="https://img.shields.io/badge/Chart.js-4.0%2B-ff2a6d?style=for-the-badge&logo=chartdotjs&logoColor=white&labelColor=2d0a1f"/&gt;
-  &lt;img src="https://img.shields.io/badge/Google%20Gemini-AI%20Powered-4285F4?style=for-the-badge&logo=google&logoColor=white&labelColor=1a237e"/&gt;
-  &lt;img src="https://img.shields.io/badge/Tailwind-CSS%20Framework-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white&labelColor=0f2f2f"/&gt;
-&lt;/p&gt;
-
-&lt;!-- Live Status Indicator --&gt;
-&lt;p align="center"&gt;
-  &lt;img src="https://img.shields.io/badge/System%20Status-Operational-39ff14?style=flat-square&logo=statuspage&logoColor=white"/&gt;
-  &lt;img src="https://img.shields.io/badge/Last%20Match-Simulated%20Live-00d4ff?style=flat-square&logo=clockify&logoColor=white"/&gt;
-  &lt;img src="https://img.shields.io/badge/Response%20Time-%3C100ms-ff2a6d?style=flat-square&logo=fastly&logoColor=white"/&gt;
-&lt;/p&gt;
-
----
-
 ## 🎬 Live Demo
 
-&lt;!-- GitHub Native Video Player - Full Dashboard Demo --&gt;
-&lt;div align="center"&gt;
+<!-- Main Demo Video - Auto-plays on hover/load -->
+<div align="center">
   
-  ### 📹 Full System Demonstration (60 seconds)
+  ### 📹 Real-Time Tactical Command Center in Action
   
-  &lt;video src="football_analysis_video.mp4" width="800" controls poster="assets/video-thumbnail.png"&gt;
-    Your browser does not support the video tag. Download the video &lt;a href="assets/demo-videos/football-analytics-demo.mp4"&gt;here&lt;/a&gt;.
-  &lt;/video&gt;
+  <video src="https://private-user-images.githubusercontent.com/173762753/552617898-8fe03498-a24d-41ac-ab65-9416e23a8404.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE1ODE0NTAsIm5iZiI6MTc3MTU4MTE1MCwicGF0aCI6Ii8xNzM3NjI3NTMvNTUyNjE3ODk4LThmZTAzNDk4LWEyNGQtNDFhYy1hYjY1LTk0MTZlMjNhODQwNC5tcDQ_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyMFQwOTUyMzBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MzQ1ZDEzMTFlZDczYTJmOGRmZDJiMThiMmYwMTRhOGY1NzRmYTdjYTEyOWU3NTg2NTNhMDc4ZWYyNDc4YTdjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.CiiKsvOoNpv7twx0imge4PuZFzFyTvknkuLU0NOrMLg" 
+         width="800" 
+         autoplay 
+         muted 
+         loop 
+         playsinline
+         style="border-radius: 12px; box-shadow: 0 20px 40px rgba(57, 255, 20, 0.3);">
+  </video>
   
-  &lt;p&gt;&lt;em&gt;Real-time data pipeline, AI tactical insights, and live chart animations in action&lt;/em&gt;&lt;/p&gt;
+  <p><em>🔴 Live data pipeline • 🤖 AI tactical insights • 📊 Real-time charts</em></p>
   
-&lt;/div&gt;
+</div>
 
-&lt;!-- Feature Breakdown Videos --&gt;
-&lt;details&gt;
-  &lt;summary&gt;&lt;b&gt;🎯 Click to view feature-specific demonstrations&lt;/b&gt;&lt;/summary&gt;
+<!-- Feature Breakdown - Grid of Auto-playing Videos -->
+<details open>
+  <summary><b>🎯 Feature Deep Dive (Click to toggle)</b></summary>
   
-  &lt;br/&gt;
+  <br/>
   
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;td width="50%"&gt;
-        &lt;b&gt;⚡ Real-Time Data Pipeline&lt;/b&gt;&lt;br/&gt;
-        &lt;video src="https://user-images.githubusercontent.com/YOUR_GITHUB_ID/data-pipeline-demo.mp4" width="100%" controls muted loop&gt;
-          &lt;a href="assets/demo-videos/data-pipeline-demo.mp4"&gt;Download video&lt;/a&gt;
-        &lt;/video&gt;
-        &lt;p&gt;&lt;em&gt;3-second refresh cycle with zero page reloads&lt;/em&gt;&lt;/p&gt;
-      &lt;/td&gt;
-      &lt;td width="50%"&gt;
-        &lt;b&gt;🤖 AI Tactical Engine&lt;/b&gt;&lt;br/&gt;
-        &lt;video src="https://user-images.githubusercontent.com/YOUR_GITHUB_ID/ai-insights-demo.mp4" width="100%" controls muted loop&gt;
-          &lt;a href="assets/demo-videos/ai-insights-demo.mp4"&gt;Download video&lt;/a&gt;
-        &lt;/video&gt;
-        &lt;p&gt;&lt;em&gt;Gemini AI generating live tactical observations&lt;/em&gt;&lt;/p&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td width="50%"&gt;
-        &lt;b&gt;📊 Interactive Charts&lt;/b&gt;&lt;br/&gt;
-        &lt;video src="https://user-images.githubusercontent.com/YOUR_GITHUB_ID/charts-demo.mp4" width="100%" controls muted loop&gt;
-          &lt;a href="assets/demo-videos/charts-demo.mp4"&gt;Download video&lt;/a&gt;
-        &lt;/video&gt;
-        &lt;p&gt;&lt;em&gt;Win probability curves and performance radar&lt;/em&gt;&lt;/p&gt;
-      &lt;/td&gt;
-      &lt;td width="50%"&gt;
-        &lt;b&gt;🎨 UI/UX Showcase&lt;/b&gt;&lt;br/&gt;
-        &lt;video src="https://user-images.githubusercontent.com/YOUR_GITHUB_ID/ui-demo.mp4" width="100%" controls muted loop&gt;
-          &lt;a href="assets/demo-videos/ui-demo.mp4"&gt;Download video&lt;/a&gt;
-        &lt;/video&gt;
-        &lt;p&gt;&lt;em&gt;Glassmorphism design with stadium lighting effects&lt;/em&gt;&lt;/p&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
+  <table>
+    <tr>
+      <td width="50%" align="center">
+        <b>⚡ Data Pipeline (3s Refresh)</b><br/><br/>
+        <video src="https://private-user-images.githubusercontent.com/173762753/552617898-8fe03498-a24d-41ac-ab65-9416e23a8404.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE1ODE0NTAsIm5iZiI6MTc3MTU4MTE1MCwicGF0aCI6Ii8xNzM3NjI3NTMvNTUyNjE3ODk4LThmZTAzNDk4LWEyNGQtNDFhYy1hYjY1LTk0MTZlMjNhODQwNC5tcDQ_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyMFQwOTUyMzBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MzQ1ZDEzMTFlZDczYTJmOGRmZDJiMThiMmYwMTRhOGY1NzRmYTdjYTEyOWU3NTg2NTNhMDc4ZWYyNDc4YTdjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.CiiKsvOoNpv7twx0imge4PuZFzFyTvknkuLU0NOrMLg" 
+               width="100%" 
+               autoplay 
+               muted 
+               loop 
+               playsinline
+               style="border-radius: 8px;">
+        </video>
+      </td>
+      <td width="50%" align="center">
+        <b>🤖 Gemini AI Insights</b><br/><br/>
+        <video src="https://private-user-images.githubusercontent.com/173762753/552617898-8fe03498-a24d-41ac-ab65-9416e23a8404.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE1ODE0NTAsIm5iZiI6MTc3MTU4MTE1MCwicGF0aCI6Ii8xNzM3NjI3NTMvNTUyNjE3ODk4LThmZTAzNDk4LWEyNGQtNDFhYy1hYjY1LTk0MTZlMjNhODQwNC5tcDQ_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyMFQwOTUyMzBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MzQ1ZDEzMTFlZDczYTJmOGRmZDJiMThiMmYwMTRhOGY1NzRmYTdjYTEyOWU3NTg2NTNhMDc4ZWYyNDc4YTdjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.CiiKsvOoNpv7twx0imge4PuZFzFyTvknkuLU0NOrMLg" 
+               width="100%" 
+               autoplay 
+               muted 
+               loop 
+               playsinline
+               style="border-radius: 8px;">
+        </video>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" align="center">
+        <b>📊 Interactive Charts</b><br/><br/>
+        <video src="https://private-user-images.githubusercontent.com/173762753/552617898-8fe03498-a24d-41ac-ab65-9416e23a8404.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE1ODE0NTAsIm5iZiI6MTc3MTU4MTE1MCwicGF0aCI6Ii8xNzM3NjI3NTMvNTUyNjE3ODk4LThmZTAzNDk4LWEyNGQtNDFhYy1hYjY1LTk0MTZlMjNhODQwNC5tcDQ_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyMFQwOTUyMzBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MzQ1ZDEzMTFlZDczYTJmOGRmZDJiMThiMmYwMTRhOGY1NzRmYTdjYTEyOWU3NTg2NTNhMDc4ZWYyNDc4YTdjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.CiiKsvOoNpv7twx0imge4PuZFzFyTvknkuLU0NOrMLg" 
+               width="100%" 
+               autoplay 
+               muted 
+               loop 
+               playsinline
+               style="border-radius: 8px;">
+        </video>
+      </td>
+      <td width="50%" align="center">
+        <b>🎨 Stadium UI Effects</b><br/><br/>
+        <video src="https://private-user-images.githubusercontent.com/173762753/552617898-8fe03498-a24d-41ac-ab65-9416e23a8404.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE1ODE0NTAsIm5iZiI6MTc3MTU4MTE1MCwicGF0aCI6Ii8xNzM3NjI3NTMvNTUyNjE3ODk4LThmZTAzNDk4LWEyNGQtNDFhYy1hYjY1LTk0MTZlMjNhODQwNC5tcDQ_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjIwJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyMFQwOTUyMzBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01MzQ1ZDEzMTFlZDczYTJmOGRmZDJiMThiMmYwMTRhOGY1NzRmYTdjYTEyOWU3NTg2NTNhMDc4ZWYyNDc4YTdjJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.CiiKsvOoNpv7twx0imge4PuZFzFyTvknkuLU0NOrMLg" 
+               width="100%" 
+               autoplay 
+               muted 
+               loop 
+               playsinline
+               style="border-radius: 8px;">
+        </video>
+      </td>
+    </tr>
+  </table>
   
-&lt;/details&gt;
-
----
-
+</details>
 ## 🚀 Overview
 
 **Football Analytics AI** is a **real-time tactical command center** that transforms raw match data into actionable coaching intelligence. Built with a modern **Single Page Application (SPA)** architecture, it bridges high-frequency data ingestion with **LLM-powered tactical analysis**—delivering stadium-grade analytics to your browser.
