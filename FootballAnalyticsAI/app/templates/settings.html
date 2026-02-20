@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Elite AI Football Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #06080c;
+            --card-glass: rgba(17, 24, 39, 0.7);
+        }
+        body {
+            background: var(--bg-deep);
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: var(--card-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="flex h-screen">
+
+    <aside class="w-20 flex flex-col items-center py-8 bg-[#090c10] border-r border-white/5 flex-shrink-0">
+        <div class="mb-12 text-blue-500"><i data-lucide="activity" class="w-8 h-8"></i></div>
+        <nav class="flex flex-col space-y-10">
+            <a href="/" class="sidebar-item text-gray-500"><i data-lucide="layout-grid"></i></a>
+            <a href="/matches" class="sidebar-item text-gray-500"><i data-lucide="database"></i></a>
+            <a href="/strategy" class="sidebar-item text-gray-500"><i data-lucide="swords"></i></a>
+            <a href="/settings" class="sidebar-item text-blue-500"><i data-lucide="settings"></i></a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+        <header class="mb-10">
+            <h1 class="text-4xl font-extrabold tracking-tight">Settings</h1>
+        </header>
+        <div class="glass-card p-6 rounded-2xl">
+            <p class="text-gray-400">This page will have settings for the application, such as API keys and preferences.</p>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

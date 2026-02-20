@@ -1,0 +1,14 @@
+Match on 2026-02-12, Competition: Campeonato Brasileiro Série A. Home Team: São Paulo FC (Score: 2), Away Team: Grêmio FBPA (Score: 0). Match Status: FINISHED. If São Paulo FC had an average of nan goals in their last 5 games, and Grêmio FBPA had an average of nan goals in their last 5 games. Predict the outcome and provide tactical insights.
+---
+Match on 2026-02-12, Competition: Copa Libertadores. Home Team: Club Alianza Lima (Score: 1), Away Team: 2 de Mayo (Score: 0). Match Status: IN_PLAY. If Club Alianza Lima had an average of nan goals in their last 5 games, and 2 de Mayo had an average of nan goals in their last 5 games. Predict the outcome and provide tactical insights.
+---
+Match on 2026-02-12, Competition: Campeonato Brasileiro Série A. Home Team: CR Vasco da Gama (Score: 0), Away Team: EC Bahia (Score: 1). Match Status: FINISHED. If CR Vasco da Gama had an average of nan goals in their last 5 games, and EC Bahia had an average of nan goals in their last 5 games. Predict the outcome and provide tactical insights.
+---
+Match on 2026-02-12, Competition: Premier League. Home Team: Brentford FC (Score: 0), Away Team: Arsenal FC (Score: 0). Match Status: TIMED. If Brentford FC had an average of nan goals in their last 5 games, and Arsenal FC had an average of nan goals in their last 5 games. Predict the outcome and provide tactical insights.
+---
+Match on 2026-02-12, Competition: Campeonato Brasileiro Série A. Home Team: CA Paranaense (Score: 0), Away Team: Santos FC (Score: 0). Match Status: TIMED. If CA Paranaense had an average of nan goals in their last 5 games, and Santos FC had an average of nan goals in their last 5 games. Predict the outcome and provide tactical insights.
+---
+Match on 2026-02-12, Competition: Campeonato Brasileiro Série A. Home Team: Fluminense FC (Score: 0), Away Team: Botafogo FR (Score: 0). Match Status: TIMED. If Fluminense FC had an average of nan goals in their last 5 games, and Botafogo FR had an average of nan goals in their last 5 games. Predict the outcome and provide tactical insights.
+---
+Match on 2026-02-12, Competition: Campeonato Brasileiro Série A. Home Team: SC Corinthians Paulista (Score: 0), Away Team: RB Bragantino (Score: 0). Match Status: TIMED. If SC Corinthians Paulista had an average of nan goals in their last 5 games, and RB Bragantino had an average of nan goals in their last 5 games. Predict the outcome and provide tactical insights.
+---

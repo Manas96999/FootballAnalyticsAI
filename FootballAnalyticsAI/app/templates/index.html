@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite AI Football Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pitch-green: #0d2818;
+            --pitch-light: #1a4d2e;
+            --pitch-line: rgba(255, 255, 255, 0.3);
+            --neon-green: #39ff14;
+            --neon-blue: #00d4ff;
+            --neon-red: #ff2a6d;
+            --floodlight: rgba(255, 255, 255, 0.15);
+        }
+        
+        body {
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(57, 255, 20, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(135deg, #050a0f 0%, #0a1f0a 50%, #050a0f 100%);
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pitch-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(to right, var(--pitch-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--pitch-line) 1px, transparent 1px);
+            background-size: 100px 100px; opacity: 0.1; pointer-events: none; z-index: 0;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(100px); }
+        }
+
+        .floodlight {
+            position: fixed; width: 300px; height: 300px;
+            background: radial-gradient(circle, var(--floodlight) 0%, transparent 70%);
+            pointer-events: none; z-index: 1; animation: flicker 4s ease-in-out infinite;
+        }
+
+        .floodlight-1 { top: -100px; left: 10%; animation-delay: 0s; }
+        .floodlight-2 { top: -100px; right: 10%; animation-delay: 1s; }
+        .floodlight-3 { bottom: -100px; left: 20%; animation-delay: 2s; }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        .glass-card {
+            background: rgba(13, 40, 24, 0.6); backdrop-filter: blur(20px);
+            border: 1px solid rgba(57, 255, 20, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .glass-card:hover::before { left: 100%; }
+        .glass-card:hover {
+            border-color: rgba(57, 255, 20, 0.3);
+            box-shadow: 0 12px 40px 0 rgba(57, 255, 20, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .master-container { display: grid; grid-template-rows: auto 1fr; height: 100%; position: relative; z-index: 10; }
+        .main-grid-content { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.5rem; flex-grow: 1; }
+
+        .scoreboard {
+            font-family: 'Teko', sans-serif; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            border: 3px solid #333; box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 20px rgba(57, 255, 20, 0.2);
+            position: relative;
+        }
+
+        .scoreboard::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+            pointer-events: none;
+        }
+
+        .score-digit { font-size: 3rem; font-weight: 700; color: var(--neon-green); text-shadow: 0 0 10px var(--neon-green); line-height: 1; }
+        .live-pulse { animation: livePulse 2s ease-in-out infinite; }
+        @keyframes livePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 42, 109, 0.7); } 50% { box-shadow: 0 0 0 10px rgba(255, 42, 109, 0); } }
+        canvas { filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.2)); }
+        .text-glow { text-shadow: 0 0 20px currentColor; }
+        .font-teko { font-family: 'Teko', sans-serif; }
+    </style>
+</head>
+<body class="flex h-screen">
+
+    <div class="pitch-grid"></div>
+    <div class="floodlight floodlight-1"></div>
+    <div class="floodlight floodlight-2"></div>
+    <div class="floodlight floodlight-3"></div>
+
+    <aside class="w-24 flex flex-col items-center py-8 flex-shrink-0 z-20" style="background: linear-gradient(180deg, #020408 0%, #0a1a0f 100%); border-right: 2px solid rgba(57, 255, 20, 0.1);">
+        <!-- Sidebar content unchanged -->
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto master-container z-10">
+        <header class="mb-6">
+            <div class="flex justify-between items-end">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-2 h-2 bg-[#ff2a6d] rounded-full live-pulse"></span>
+                        <span class="text-xs uppercase tracking-[0.3em] text-[#39ff14] font-bold text-glow">Live Match Feed</span>
+                    </div>
+                    <h1 id="match-title" class="text-5xl font-black font-teko tracking-wide flex items-center gap-4">
+                        <span id="home-team-name" class="text-white text-glow">TEAM A</span>
+                        <span class="text-[#39ff14] text-2xl animate-pulse">VS</span>
+                        <span id="away-team-name" class="text-white text-glow">TEAM B</span>
+                    </h1>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <div class="text-right">
+                        <span class="text-xs text-gray-500 uppercase font-bold tracking-wider">Match Time</span>
+                        <p id="match-time" class="text-4xl font-teko font-bold text-[#00d4ff] text-glow tabular-nums">00:00</p>
+                    </div>
+                    
+                    <div class="scoreboard px-6 py-3 rounded-lg flex items-center gap-4">
+                        <div class="text-center">
+                            <span id="home-team-abbr" class="text-[10px] text-gray-400 uppercase block mb-1">HME</span>
+                            <span id="home-score" class="score-digit">0</span>
+                        </div>
+                        <div class="text-[#39ff14] text-xl font-bold">-</div>
+                        <div class="text-center">
+                            <span id="away-team-abbr" class="text-[10px] text-gray-400 uppercase block mb-1">AWY</span>
+                            <span id="away-score" class="score-digit">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid-content">
+            <div class="col-span-4 row-span-2 glass-card rounded-2xl p-6 flex flex-col">
+                <h3 class="text-xs uppercase font-bold text-[#39ff14] tracking-wider mb-4">Ball Possession</h3>
+                <div class="relative flex-grow flex items-center justify-center">
+                    <canvas id="possessionChart"></canvas>
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="text-center">
+                            <span id="possession-home-value" class="text-4xl font-teko font-bold text-white">50%</span>
+                            <span class="text-xs text-gray-400 block uppercase tracking-wider">Home</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-span-8 row-span-2 glass-card rounded-2xl p-6 flex flex-col">
+                <h3 class="text-xs uppercase font-bold text-[#00d4ff] tracking-wider mb-4">Win Probability Momentum</h3>
+                <div class="relative flex-grow"><canvas id="winProbabilityChart"></canvas></div>
+            </div>
+
+            <div class="col-span-4 glass-card rounded-2xl p-6">
+                <h3 class="text-xs uppercase font-bold text-[#39ff14] mb-4">AI Tactical Analysis</h3>
+                <p id="ai-insight" class="text-sm text-gray-300 leading-relaxed italic border-l-2 border-[#39ff14]/30 pl-3">
+                    Awaiting match data...
+                </p>
+            </div>
+            
+            <div class="col-span-4 glass-card rounded-2xl p-6 flex flex-col justify-center">
+                <div class="flex justify-between items-end mb-3">
+                    <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">Expected Goals (xG)</span>
+                    <span id="xg-score" class="text-2xl font-teko font-bold text-white">0.0 - 0.0</span>
+                </div>
+                <div class="relative h-6 bg-black/40 rounded-full overflow-hidden border border-white/10">
+                    <div class="flex h-full w-full">
+                        <div id="home-xg-bar" class="bg-gradient-to-r from-[#39ff14] to-[#00d4ff] h-full" style="width: 50%"></div>
+                        <div id="away-xg-bar" class="bg-gradient-to-r from-[#ff2a6d] to-[#ff6b6b] h-full" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-4 glass-card rounded-2xl p-6 flex flex-col">
+                <h3 class="text-xs uppercase font-bold text-[#00d4ff] mb-4">Performance Matrix</h3>
+                <div class="relative flex-grow"><canvas id="radarChart"></canvas></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        Chart.defaults.color = '#9ca3af';
+        Chart.defaults.font.family = 'Plus Jakarta Sans';
+        Chart.defaults.scale.grid.color = 'rgba(57, 255, 20, 0.05)';
+
+        // Chart Instances
+        let possessionChart, winProbabilityChart, radarChart;
+
+        // 1. Possession Chart
+        const possessionCtx = document.getElementById('possessionChart').getContext('2d');
+        possessionChart = new Chart(possessionCtx, {
+            type: 'doughnut',
+            data: { datasets: [{ data: [50, 50], backgroundColor: ['#39ff14', '#ff2a6d'], borderColor: '#0d2818', borderWidth: 4 }] },
+            options: { maintainAspectRatio: false, cutout: '75%', plugins: { legend: { display: false } } }
+        });
+
+        // 2. Win Probability Chart
+        const winProbCtx = document.getElementById('winProbabilityChart').getContext('2d');
+        winProbabilityChart = new Chart(winProbCtx, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: 10 }, (_, i) => i * 10), // Initial labels
+                datasets: [
+                    { label: 'Home Win', data: [], borderColor: '#3b82f6', tension: 0.4, fill: true },
+                    { label: 'Draw', data: [], borderColor: '#eab308', tension: 0.4, fill: true },
+                    { label: 'Away Win', data: [], borderColor: '#ef4444', tension: 0.4, fill: true }
+                ]
+            },
+            options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 100 } }, plugins: { legend: { display: false } } }
+        });
+
+        // 3. Radar Chart
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        radarChart = new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Attacking', 'Defensive', 'Speed', 'Discipline'],
+                datasets: [
+                    { label: 'Home', data: [50, 50, 50, 50], backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6' },
+                    { label: 'Away', data: [50, 50, 50, 50], backgroundColor: 'rgba(239, 68, 68, 0.2)', borderColor: '#ef4444' }
+                ]
+            },
+            options: { maintainAspectRatio: false, scales: { r: { beginAtZero: true, max: 100 } } }
+        });
+
+        // --- Live Data Update Logic ---
+        async function fetchData() {
+            try {
+                const [matchResponse, insightResponse] = await Promise.all([
+                    fetch('/api/match-data'),
+                    fetch('/api/insight')
+                ]);
+
+                if (!matchResponse.ok || !insightResponse.ok) {
+                    console.error("Network response was not ok.");
+                    return;
+                }
+
+                const matchData = await matchResponse.json();
+                const insightData = await insightResponse.json();
+
+                // 1. Update DOM Elements
+                document.getElementById('home-team-name').textContent = matchData.home_team;
+                document.getElementById('away-team-name').textContent = matchData.away_team;
+                document.getElementById('home-team-abbr').textContent = matchData.home_team.substring(0, 3).toUpperCase();
+                document.getElementById('away-team-abbr').textContent = matchData.away_team.substring(0, 3).toUpperCase();
+                document.getElementById('home-score').textContent = matchData.home_score;
+                document.getElementById('away-score').textContent = matchData.away_score;
+                document.getElementById('match-time').textContent = matchData.match_time;
+                document.getElementById('possession-home-value').textContent = `${matchData.possession}%`;
+                document.getElementById('ai-insight').textContent = `"${insightData.insight}"`;
+                document.getElementById('xg-score').textContent = `${matchData.home_xG} - ${matchData.away_xG}`;
+
+                // 2. Update xG Bars
+                const totalXg = matchData.home_xG + matchData.away_xG;
+                const homeXgPercent = totalXg > 0 ? (matchData.home_xG / totalXg) * 100 : 50;
+                const awayXgPercent = totalXg > 0 ? (matchData.away_xG / totalXg) * 100 : 50;
+                document.getElementById('home-xg-bar').style.width = `${homeXgPercent}%`;
+                document.getElementById('away-xg-bar').style.width = `${awayXgPercent}%`;
+
+                // 3. Update Charts
+                // Possession Chart
+                possessionChart.data.datasets[0].data = [matchData.possession, 100 - matchData.possession];
+                possessionChart.update('none');
+
+                // Radar Chart
+                radarChart.data.datasets[0].data = [matchData.attacking, matchData.defensive, matchData.speed, matchData.discipline];
+                // Assuming away team stats are mirrored for this example
+                radarChart.data.datasets[1].data = [100-matchData.attacking, 100-matchData.defensive, 100-matchData.speed, 100-matchData.discipline];
+                radarChart.update('none');
+                
+                // Win Probability Chart (append new data)
+                const newLabel = matchData.match_time.split(':')[0]; // Use minute as label
+                if (!winProbabilityChart.data.labels.includes(newLabel)) {
+                    winProbabilityChart.data.labels.push(newLabel);
+                     // You would need to get this from your API, faking it here
+                    winProbabilityChart.data.datasets[0].data.push(Math.random() * 100); 
+                    winProbabilityChart.data.datasets[1].data.push(Math.random() * 100);
+                    winProbabilityChart.data.datasets[2].data.push(Math.random() * 100);
+                }
+                winProbabilityChart.update('none');
+
+
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        }
+
+        // Fetch data every 3 seconds
+        setInterval(fetchData, 3000);
+
+        // Initial fetch
+        fetchData();
+    </script>
+</body>
+</html>
