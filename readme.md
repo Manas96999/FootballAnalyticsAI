@@ -176,34 +176,37 @@ Open browser to http://127.0.0.1:5000
 Watch live data update every 3 seconds
 Observe AI insights in the Tactical Observation panel
 
+## 📂 Project Structure
+
+```text
 FootballAnalyticsAI/
-├── 📁 app/
-│   ├── 📄 routes.py              # Flask routes & API endpoints
-│   ├── 📁 templates/
-│   │   └── 📄 index.html         # Main SPA dashboard
-│   └── 📁 static/
-│       ├── 📁 css/
-│       └── 📁 js/
-├── 📁 src/
-│   ├── 📄 gemini_agent.py        # AI integration logic
-│   └── 📄 simulate_match.py      # Live match data generator
-├── 📁 dataset/
-│   └── 📁 processed/
-│       ├── 📄 matches_data.csv   # Real-time match stats
-│       └── 📄 tactical_report.json # AI-generated insights
-├── 📁 assets/                    # Media & documentation
-│   ├── 📁 screenshots/           # Static UI images
-│   ├── 📁 demo-videos/           # Local video files
+├──  📂app/                    # Flask application package
+│   ├── 📄routes.py           # Flask routes & API endpoints
+│   ├──  📂templates/          # HTML templates
+│   │   └──📄 index.html      # Main SPA dashboard
+│   └──  📂static/             # Static assets
+│       ├── 📂 css/            # Stylesheets
+│       └──  📂js/             # JavaScript files
+├──  📂src/                    # Source code modules
+│   ├── gemini_agent.py     # AI integration logic
+│   └── simulate_match.py   # Live match data generator
+├──  📂dataset/                # Data storage
+│   └──  📂processed/          # Processed match data
+│       ├── 📄matches_data.csv       # Real-time match stats
+│       └── 📄tactical_report.json   # AI-generated insights
+├──  📂assets/                 # Media & documentation
+│   ├── 📂 screenshots/        # Static UI images
+│   ├──  📂demo-videos/        # Demo video files
 │   │   ├── football-analytics-demo.mp4
 │   │   ├── data-pipeline-demo.mp4
 │   │   ├── ai-insights-demo.mp4
 │   │   ├── charts-demo.mp4
 │   │   └── ui-demo.mp4
-│   └── video-thumbnail.png       # Poster image for main video
-├── 📄 start_demo.py              # Master launch script
-├── 📄 requirements.txt
-└── 📄 README.md                  # You are here
-
+│   └── video-thumbnail.png # Poster image for main video
+├── 📄start_demo.py           # Master launch script
+├── 📄requirements.txt        # Python dependencies
+└── 📄README.md               # Project documentation
+```
 
 🚧 Future Roadmap
 [ ] WebSocket Integration: Replace polling with Socket.IO for true real-time
